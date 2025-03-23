@@ -27,9 +27,11 @@ export async function DELETE(
       return new NextResponse("Bad Request", { status: 400 });
     }
 
+    const conversationIdNumber = parseInt(conversationId, 10);
+
     const existingConversation = await prisma.conversation.findUnique({
       where: {
-        id: conversationId,
+        id: conversationIdNumber,
       },
       include: {
         users: {
@@ -56,7 +58,7 @@ export async function DELETE(
     // Delete the conversation
     const deletedConversation = await prisma.conversation.delete({
       where: {
-        id: conversationId,
+        id: conversationIdNumber,
       },
     });
 
@@ -98,9 +100,11 @@ export async function GET(
       return new NextResponse("Bad Request", { status: 400 });
     }
 
+    const conversationIdNumber = parseInt(conversationId, 10);
+
     const conversation = await prisma.conversation.findUnique({
       where: {
-        id: conversationId,
+        id: conversationIdNumber,
       },
       include: {
         users: {
