@@ -96,7 +96,7 @@ export async function POST(req: Request, { params }: { params: IParams }) {
       if (currentUser.email) {
         try {
           await pusherServer.trigger(currentUser.email, "conversation:update", {
-            id: conversationId,
+            id: parsedConversationId,
             messages: [updatedMessage],
           });
         } catch (error) {
@@ -105,13 +105,12 @@ export async function POST(req: Request, { params }: { params: IParams }) {
         }
       }
 
-      if (conversationId) {
-        try {
-          await pusherServer.trigger(conversationId.toString(), "message:update", updatedMessage);
-        } catch (error) {
-          console.error("Pusher error:", error);
-          // Continue execution even if Pusher fails
-        }
+      // Use the string representation of parsedConversationId for the channel name
+      try {
+        await pusherServer.trigger(parsedConversationId.toString(), "message:update", updatedMessage);
+      } catch (error) {
+        console.error("Pusher error:", error);
+        // Continue execution even if Pusher fails
       }
 
       return NextResponse.json(updatedMessage);
