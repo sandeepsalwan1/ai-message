@@ -1,8 +1,5 @@
 <h1 align="center">Messenger Clone</h1>
 
-<div align="center">
-  <img src="https://github.com/ayusshrathore/messenger-clone/raw/main/public/images/logo.png" height="50" width="50" />
-</div>
 
 ## Introduction
 
@@ -26,21 +23,12 @@ The Messenger Clone comes packed with a range of features to make messaging a de
 
 - **Responsive Interface**: Enjoy a seamless messaging experience on any device. The platform is fully responsive, making it accessible from desktops, tablets, and smartphones.
 
-## Screenshots
-
-<img width="1470" alt="Screenshot 2023-08-03 at 7 36 24 PM" src="https://github.com/ayusshrathore/messenger-clone/assets/61450246/cf386522-1861-40d2-944c-c3f4860c7394">
-<img width="1470" alt="Screenshot 2023-08-03 at 7 37 42 PM" src="https://github.com/ayusshrathore/messenger-clone/assets/61450246/0d20208e-9f51-4e10-9e07-2349d00d5e2c">
-<img width="1470" alt="Screenshot 2023-08-03 at 7 38 24 PM" src="https://github.com/ayusshrathore/messenger-clone/assets/61450246/978863ef-8e4b-49f5-b45d-c16605af512e">
-<img width="1470" alt="Screenshot 2023-08-03 at 7 38 34 PM" src="https://github.com/ayusshrathore/messenger-clone/assets/61450246/9dbdae16-f85e-4164-81df-0f8870564b55">
-<img width="1470" alt="Screenshot 2023-08-03 at 7 39 35 PM" src="https://github.com/ayusshrathore/messenger-clone/assets/61450246/66f2735b-eb0b-4378-b1ea-874cfedcebd0">
-<img width="1470" alt="Screenshot 2023-08-03 at 7 39 49 PM" src="https://github.com/ayusshrathore/messenger-clone/assets/61450246/7fb35e72-8194-440f-958c-6540f991dd2b">
-
 
 ## Installation
 
 Follow these simple steps to set up the project on your local machine:
 
-1. Clone the repository: `git clone https://github.com/ayusshrathore/messenger-clone.git`
+1. Clone the repository: `git clone 
 2. Navigate to the project directory: `cd messenger-clone`
 3. Install dependencies: `npm install`
 
