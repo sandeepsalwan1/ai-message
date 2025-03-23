@@ -164,7 +164,7 @@ const ConversationList: FC<ConversationListProps> = ({ conversations, users }) =
       // Also update our local conversation state
       setLocalConversations(prev => prev.filter(item => item.id !== conversation.id));
       
-      if (conversationId === conversation.id) {
+      if (conversationId === conversation.id.toString()) {
         router.push("/conversations");
       }
     };
@@ -226,7 +226,7 @@ const ConversationList: FC<ConversationListProps> = ({ conversations, users }) =
             </div>
           ) : (
             items.map((item) => (
-              <ConversationBox key={item.id} conversation={item} selected={conversationId === item.id} />
+              <ConversationBox key={item.id} conversation={item} selected={conversationId === item.id.toString()} />
             ))
           )}
         </div>

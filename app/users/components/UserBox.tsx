@@ -34,7 +34,7 @@ const UserBox: FC<UserBoxProps> = ({ user }) => {
 				if (existingConversation) {
 					router.push(`/conversations/${existingConversation.id}`);
 					setIsLoading(false);
-					return Promise.resolve(); // Return resolved promise to skip next then
+					return null; // Return null instead of a Promise
 				}
 				
 				// Otherwise create a new conversation
