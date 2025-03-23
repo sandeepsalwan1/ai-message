@@ -13,9 +13,18 @@ export const isBuildTime = () => {
   const isVercelBuild = 
     process.env.VERCEL_ENV === 'production' || 
     process.env.VERCEL_ENV === 'preview' ||
-    process.env.NEXT_PHASE === 'phase-production-build';
+    process.env.NEXT_PHASE === 'phase-production-build' ||
+    process.env.NEXT_PUBLIC_VERCEL_BUILD === 'true';
   
-  return isServer && isVercelBuild;
+  // Check for explicit build time flag from our build script
+  const hasBuildFlag = process.env.NEXT_PUBLIC_VERCEL_BUILD === 'true';
+  
+  if (isServer && (isVercelBuild || hasBuildFlag)) {
+    console.log('Build time detected. Using mock data.');
+    return true;
+  }
+  
+  return false;
 };
 
 // This function returns either real data or mock data during build
