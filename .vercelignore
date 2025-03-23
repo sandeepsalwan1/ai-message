@@ -1,0 +1,10 @@
+# Development environment files (use .env.production instead)
+.env
+.env.local
+.env.development
+
+# Other files to ignore
+README.md
+DEPLOYMENT.md
+.git
+node_modules 
