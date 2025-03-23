@@ -42,8 +42,8 @@ const createPusherServer = () => {
     return new MockPusherServer() as unknown as PusherServer;
   }
   
-  // Get environment variables with fallbacks
-  const appId = process.env.PUSHER_APP_ID || process.env.NEXT_PUBLIC_PUSHER_APP_ID;
+  // Get environment variables with fallbacks - use consistent naming conventions
+  const appId = process.env.PUSHER_APP_ID;
   const key = process.env.NEXT_PUBLIC_PUSHER_APP_KEY;
   const secret = process.env.PUSHER_SECRET;
   const cluster = process.env.NEXT_PUBLIC_PUSHER_CLUSTER || defaultCluster;
