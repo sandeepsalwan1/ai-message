@@ -10,14 +10,13 @@ import AvatarGroup from "@/app/components/AvatarGroup";
 import Avatar from "@/app/components/avatar";
 import useActiveList from "@/app/hooks/useActiveList";
 import useOtherUser from "@/app/hooks/useOtherUser";
+import { FullConversationType } from "@/app/types";
 import ConfirmModal from "./ConfirmModal";
 
 interface ProfileDrawerProps {
 	isOpen: boolean;
 	onClose: () => void;
-	data: Conversation & {
-		users: User[];
-	};
+	data: FullConversationType;
 }
 
 const ProfileDrawer: FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) => {
@@ -26,6 +25,16 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) => {
 
 	const { members } = useActiveList();
 	const isActive = members.indexOf(otherUser?.email!) !== -1;
+	
+	// Extract users from UserConversation objects
+	const users = useMemo(() => {
+		if (!data.users) {
+			return [];
+		}
+		
+		// Handle the MySQL schema with junction table
+		return data.users.map(userConv => userConv.user);
+	}, [data.users]);
 
 	const joinedDate = useMemo(() => {
 		if (!otherUser?.createdAt) {
@@ -109,7 +118,7 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) => {
 												<div className="flex flex-col items-center">
 													<div className="mb-2">
 														{data.isGroup ? (
-															<AvatarGroup users={data.users} />
+															<AvatarGroup users={users} />
 														) : (
 															<Avatar user={otherUser} />
 														)}
@@ -139,7 +148,7 @@ const ProfileDrawer: FC<ProfileDrawerProps> = ({ isOpen, onClose, data }) => {
 																		Emails
 																	</dt>
 																	<dd className="mt-1 text-sm text-gray-900 sm:col-span-2">
-																		{data.users
+																		{users
 																			.map((user) => user.email)
 																			.join(", ")}
 																	</dd>
