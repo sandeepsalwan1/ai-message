@@ -20,6 +20,19 @@ const getConversationById = async (conversationId: string) => {
             user: true
           }
         },
+        messages: {
+          include: {
+            sender: true,
+            seenBy: {
+              include: {
+                user: true
+              }
+            }
+          },
+          orderBy: {
+            createdAt: 'asc'
+          }
+        }
       },
     });
 
